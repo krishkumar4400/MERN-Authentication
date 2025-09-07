@@ -4,6 +4,10 @@ import {useNavigate } from "react-router-dom";
 import { AppContent } from "../context/AppContext.jsx";
 import axios from 'axios';
 import { toast } from "react-toastify";
+// import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
+import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
+
+import {useUser, useClerk, UserButton} from '@clerk/clerk-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +15,9 @@ const Login = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
+
+  const {openSignIn} = useClerk();
+  const {user} = useUser();
 
   const { backendUrl, setIsLogedIn, getUserData } = useContext(AppContent);
 
@@ -55,6 +62,17 @@ const Login = () => {
         className="absolute top-5 left-5 w-28 sm:w-32 sm:left-20 cursor-pointer"
         alt=""
       />
+      <div onClick={openSignIn} className="absolute top-5 right-5 sm:right-20 max-sm:flex-col flex items-center text-md font-medium text-white bg-blue-600 px-6 py-2 rounded-full gap-1 cursor-pointer ">
+        <button className="pl-1 cursor-pointer">
+          continue with
+        </button>
+        <div className="flex items-center gap-1">
+          <FaFacebook />
+          <FaGithub />
+          <FaGoogle />
+        </div>
+      </div>
+
       <div className="text-center text-sm bg-slate-900 w-full sm:w-96 p-10 justify-center rounded-lg text-indigo-300 shadow-lg">
         <h2 className="text-3xl text-white mb-3 font-semibold">
           {state === "Sign Up" ? "Create Account" : "Login"}
@@ -68,7 +86,9 @@ const Login = () => {
           {state === "Sign Up" && (
             <div className="flex items-center w-full gap-3 px-5 py-3 rounded-full bg-[#333A5C] mb-4">
               <img src={assets.person_icon} alt="" />
-              <input onChange={e=>setName(e.target.value)} value={name}
+              <input
+                onChange={(e) => setName(e.target.value)}
+                value={name}
                 className="outline-0 bg-transparent"
                 type="text"
                 placeholder="Full Name"
@@ -78,7 +98,9 @@ const Login = () => {
           )}
           <div className="flex items-center w-full gap-3 px-5 py-3 rounded-full bg-[#333A5C] mb-4">
             <img src={assets.mail_icon} alt="" />
-            <input onChange={e=>setEmail(e.target.value)} value={email}
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               className="outline-0 bg-transparent"
               type="email"
               placeholder="Email Id"
@@ -87,7 +109,9 @@ const Login = () => {
           </div>
           <div className="flex items-center w-full gap-3 px-5 py-3 rounded-full bg-[#333A5C] mb-4">
             <img src={assets.lock_icon} alt="" />
-            <input onChange={e=>setPassword(e.target.value)} value={password}
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               className="outline-0 bg-transparent"
               type="password"
               placeholder="Password"

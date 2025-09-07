@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { AppContent } from "../context/AppContext.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useUser, UserButton } from "@clerk/clerk-react";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const {user} = useUser();
+
   const { setIsLogedIn, userData, backendUrl, setUserData } =
     useContext(AppContent);
 
@@ -43,10 +46,6 @@ const NavBar = () => {
     }
   }
 
-  const changePassword = async () => {
-    const { data } = await axios.post(backendUrl + "/api/auth/change-password");
-  }
-
   return (
     <div className="w-full flex justify-between p-4 sm:p-6 sm:px-20 absolute top-0">
       <img
@@ -77,13 +76,17 @@ const NavBar = () => {
               >
                 Logout
               </li>
-              <li onClick={() => navigate('/change-password')}
-               className="py-1 px-2 cursor-pointer hover:bg-gray-300">
+              <li
+                onClick={() => navigate("/change-password")}
+                className="py-1 px-2 cursor-pointer hover:bg-gray-300"
+              >
                 Change password
               </li>
             </ul>
           </div>
         </div>
+      ) : user ? (
+        <UserButton />
       ) : (
         <button
           onClick={() => navigate("/login")}
