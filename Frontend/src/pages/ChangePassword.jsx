@@ -26,7 +26,7 @@ const ChangePassword = () => {
       const {data} = await axios.post(backendUrl + '/api/auth/change-password', {oldPassword,newPassword});
       if(data.success) {
         toast.success(data.message);
-        navigate('/login');
+        navigate('/');
       } else {
         toast.error(data.message);
         navigate('/change-password');
