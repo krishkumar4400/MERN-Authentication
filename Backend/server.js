@@ -15,7 +15,14 @@ const allowedOrigins = [process.env.FRONTEND_URI];
 app.use(express.json());
 app.use(urlencoded({extended:true}));
 app.use(cookieParser());
-app.use(cors({origin: allowedOrigins, credentials: true}));
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URI,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
+
 
 // API Endpoints
 app.use('/api/auth', router);
