@@ -17,9 +17,11 @@ app.use(urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FRONTEND_URI,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true,
+    origin: [
+      "http://localhost:5173",   // dev
+      "https://auth-l03k.onrender.com" // deployed frontend
+    ],
+    credentials: true, // agar cookies ya auth headers use ho rahe hain
   })
 );
 
