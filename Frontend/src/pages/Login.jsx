@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 // import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 
-import {useUser, useClerk, UserButton} from '@clerk/clerk-react';
+import {useClerk, UserButton} from '@clerk/clerk-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const {openSignIn} = useClerk();
-  const {user} = useUser();
 
   const { backendUrl, setIsLogedIn, getUserData } = useContext(AppContent);
 

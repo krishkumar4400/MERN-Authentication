@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",   // dev
+      "http://localhost:5174",   // dev
       "https://auth-l03k.onrender.com" // deployed frontend
     ],
     credentials: true, // agar cookies ya auth headers use ho rahe hain
