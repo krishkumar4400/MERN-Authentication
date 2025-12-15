@@ -1,5 +1,4 @@
 import { User } from "../Model/User.js";
-import cookieParser from "cookie-parser";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import transporter from "../Config/nodemailer.js";
