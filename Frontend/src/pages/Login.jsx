@@ -4,8 +4,6 @@ import {useNavigate } from "react-router-dom";
 import { AppContent } from "../context/AppContext.jsx";
 import axios from 'axios';
 import { toast } from "react-toastify";
-// import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
-import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 
 import {useClerk, UserButton} from '@clerk/clerk-react';
 
@@ -61,16 +59,6 @@ const Login = () => {
         className="absolute top-5 left-5 w-28 sm:w-32 sm:left-20 cursor-pointer"
         alt=""
       />
-      <div onClick={openSignIn} className="absolute top-5 right-5 sm:right-20 max-sm:flex-col flex items-center text-md font-medium text-white bg-blue-600 px-6 py-2 rounded-full gap-1 cursor-pointer ">
-        <button className="pl-1 cursor-pointer">
-          continue with
-        </button>
-        <div className="flex items-center gap-1">
-          <FaFacebook />
-          <FaGithub />
-          <FaGoogle />
-        </div>
-      </div>
 
       <div className="text-center text-sm bg-slate-900 w-full sm:w-96 p-10 justify-center rounded-lg text-indigo-300 shadow-lg">
         <h2 className="text-3xl text-white mb-3 font-semibold">
