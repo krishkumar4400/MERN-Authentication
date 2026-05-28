@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express, { urlencoded } from 'express';
 import router from './Routes/router.js';
 import { connectDB } from './Config/connectDB.js';
